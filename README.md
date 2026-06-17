@@ -287,15 +287,15 @@ architecture/architecture.png
 ```text
 CSV
  ↓
-Bronze
+Databricks Bronze
  ↓
-Silver
+Databricks Silver
  ↓
-Gold
+Databricks Gold
  ↓
 Power BI
  ↓
-Dashboard Executivo
+Dashboards Executivos RH
 ```
 
 ---
