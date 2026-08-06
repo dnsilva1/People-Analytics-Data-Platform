@@ -82,7 +82,7 @@ people-analytics-data-platform/
 │
 ├── notebooks
 │   ├── bronze
-│   │   ├── 01_bronze_ingestao_funcionarios.py ✅
+│   │   ├── 01_bronze_ingestao_tabelas.py ✅
 │   │   └── README.md
 │   │
 │   ├── 02_silver_transformation
@@ -130,15 +130,15 @@ Arquivos utilizados:
 
 Objetivo:
 
-Armazenar os dados exatamente como foram recebidos da origem, preservando seu conteúdo original e adicionando metadados para rastreabilidade e auditoria.
+Realizar a ingestão automatizada dos dados brutos provenientes do arquivo de origem, preservando integralmente seu conteúdo e estrutura. Durante o processo, são adicionados metadados para garantir rastreabilidade, auditoria e governança, armazenando cada conjunto de dados como uma tabela Delta independente na camada Bronze.
 
 Atividades realizadas:
 
-- Upload dos arquivos de origem;
-- Leitura dos arquivos utilizando Pandas;
-- Conversão para DataFrame PySpark;
+- Upload do arquivo de origem (.xlsx);
+- Leitura automática de todas as abas do arquivo utilizando Pandas;
+- Conversão dos dados para DataFrames PySpark;
 - Inclusão de metadados para rastreabilidade da carga;
-- Validação inicial da estrutura e da qualidade dos dados;
+- Validação da estrutura, quantidade e da qualidade dos dados de cada tabela;
 - Escrita das tabelas no formato Delta Lake;
 - Persistência dos dados brutos na camada Bronze.
 
@@ -154,9 +154,35 @@ Metadados adicionados
 
 Notebook:
 
-- 01_bronze_ingestion
+- 01_bronze_ingestao_tabelas
 
-(Status: Em desenvolvimento)
+Fluxo 
+
+Arquivo Excel
+      │
+      ▼
+Leitura de todas as abas (Pandas)
+      │
+      ▼
+Conversão para DataFrames PySpark
+      │
+      ▼
+Inclusão de metadados
+      │
+      ▼
+Validações iniciais
+      │
+      ▼
+Gravação em Delta Lake
+      │
+      ▼
+Camada Bronze
+├── colaboradores
+├── absenteismo
+├── turnover
+└── ferias
+
+(Status: Concluido)
 
 ---
 
