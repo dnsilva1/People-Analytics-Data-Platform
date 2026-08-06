@@ -130,16 +130,17 @@ Arquivos utilizados:
 
 Objetivo:
 
-Armazenar os dados exatamente como foram recebidos, preservando o histórico original.
+Armazenar os dados exatamente como foram recebidos da origem, preservando seu conteúdo original e adicionando metadados para rastreabilidade e auditoria.
 
 Atividades realizadas:
 
-- Upload dos arquivos CSV;
-- Leitura utilizando Pandas;
-- Inclusão de metadados para rastreabilidade
-- Escrita utilizando PySpark em Delta Parquet;
-- Validação inicial dos dados;
-- Persistência dos dados brutos.
+- Upload dos arquivos de origem;
+- Leitura dos arquivos utilizando Pandas;
+- Conversão para DataFrame PySpark;
+- Inclusão de metadados para rastreabilidade da carga;
+- Validação inicial da estrutura e da qualidade dos dados;
+- Escrita das tabelas no formato Delta Lake;
+- Persistência dos dados brutos na camada Bronze.
 
 ## Metadados adicionados
 
