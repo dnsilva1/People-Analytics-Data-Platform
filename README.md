@@ -76,8 +76,11 @@ people-analytics-data-platform/
 
 ├── datasets/
 │
-├── notebooks/
-│   ├── 01_bronze_ingestion
+├── notebooks
+│   ├── bronze
+│   │   ├── 01_bronze_ingestao_funcionarios.py ✅
+│   │   └── README.md
+│   │
 │   ├── 02_silver_transformation
 │   ├── 03_gold_kpis
 │   └── 04_analytics_model
@@ -128,7 +131,9 @@ Armazenar os dados exatamente como foram recebidos, preservando o histórico ori
 Atividades realizadas:
 
 - Upload dos arquivos CSV;
-- Leitura utilizando PySpark;
+- Leitura utilizando Pandas;
+- Inclusão de metadados para rastreabilidade
+- Escrita utilizando PySpark em Delta Parquet;
 - Validação inicial dos dados;
 - Persistência dos dados brutos.
 
