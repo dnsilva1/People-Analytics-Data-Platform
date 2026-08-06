@@ -142,7 +142,7 @@ Atividades realizadas:
 - Escrita das tabelas no formato Delta Lake;
 - Persistência dos dados brutos na camada Bronze.
 
-# Metadados adicionados
+Metadados adicionados
 
 - dt_ingestao
 - nome_arquivo
