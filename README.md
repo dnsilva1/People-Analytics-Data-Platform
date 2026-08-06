@@ -158,6 +158,7 @@ Notebook:
 
 Fluxo 
 
+```text
 Arquivo Excel
       │
       ▼
@@ -181,6 +182,7 @@ Camada Bronze
 ├── absenteismo
 ├── turnover
 └── ferias
+```
 
 (Status: Concluido)
 
