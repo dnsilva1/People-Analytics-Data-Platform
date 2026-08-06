@@ -17,7 +17,11 @@ A solução foi construída utilizando uma arquitetura Medalhão (Bronze, Silver
 # 🚀 Tecnologias Utilizadas
 
 - Databricks Community Edition
+- Python
+- Pandas
 - PySpark
+- Apache Spark
+- Delta lake
 - SQL
 - Power BI
 - GitHub
@@ -136,6 +140,16 @@ Atividades realizadas:
 - Escrita utilizando PySpark em Delta Parquet;
 - Validação inicial dos dados;
 - Persistência dos dados brutos.
+
+## Metadados adicionados
+
+- dt_ingestao
+- nome_arquivo
+- sistema_origem
+- usuario_responsavel
+- identificador_carga
+- id_carga
+
 
 Notebook:
 
