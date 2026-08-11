@@ -16,7 +16,7 @@ A solução foi construída utilizando uma arquitetura Medalhão (Bronze, Silver
 
 # 🚀 Tecnologias Utilizadas
 
-- Databricks Community Edition
+- Databricks
 - Python
 - Pandas
 - PySpark
