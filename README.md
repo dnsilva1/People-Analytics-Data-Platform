@@ -201,7 +201,7 @@ Atividades realizadas:
 - Conversão de tipos de dados;
 - Validação de regras de negócio;
 - Remoção de inconsistências;
-- -Data Quality
+- Data Quality
 - Integração entre tabelas.
 
 Notebook:
@@ -384,6 +384,7 @@ Durante o desenvolvimento deste projeto foram aplicados conceitos de:
 - Analytics Engineering
 - Arquitetura Medalhão
 - ETL / ELT
+- Data Quality
 - Data Lakehouse
 - Modelagem Analítica
 - Data Quality
@@ -401,6 +402,7 @@ Este projeto está sendo utilizado para aprofundamento prático em:
 - Databricks
 - PySpark
 - Arquitetura Medalhão
+- Data Quality
 - Engenharia de Dados
 - Analytics Engineering
 - Integração de Dados
