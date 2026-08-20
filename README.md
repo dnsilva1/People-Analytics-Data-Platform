@@ -179,9 +179,9 @@ Gravação em Delta Lake
       ▼
 Camada Bronze
 ├── colaboradores
+├── ferias
 ├── absenteismo
-├── turnover
-└── ferias
+└── turnover
 ```
 
 (Status: Concluido)
@@ -192,7 +192,7 @@ Camada Bronze
 
 Objetivo:
 
-Realizar tratamento, limpeza e padronização dos dados.
+Realizar tratamento, limpeza, padronização, criação de novos dados derivados e validação com Data Quality a partir da camada bronze. Durante o processo, são adicionados metadados do processamento para garantir rastreabilidade, auditoria e governança, armazenando cada conjunto de dados como uma tabela Delta na camada Silver.
 
 Atividades realizadas:
 
@@ -226,13 +226,13 @@ Conversão de tipos
       ↓
 Colunas derivadas
       ↓
-Validação
+Validação - Data Quality
       ↓
 Gravação Silver
 ├── colaboradores
+├── ferias
 ├── absenteismo
-├── turnover
-└── ferias
+└── turnover
 ``` 
 
 (Status: Em desenvolvimento)
