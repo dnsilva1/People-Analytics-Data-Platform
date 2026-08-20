@@ -28,6 +28,7 @@ A solução foi construída utilizando uma arquitetura Medalhão (Bronze, Silver
 
 ### Tecnologias que poderão ser incorporadas em versões futuras
 
+- Analises com IA
 - Azure Data Lake Storage
 - Azure Data Factory
 - Microsoft Fabric
