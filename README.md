@@ -201,11 +201,39 @@ Atividades realizadas:
 - Conversão de tipos de dados;
 - Validação de regras de negócio;
 - Remoção de inconsistências;
+- -Data Quality
 - Integração entre tabelas.
 
 Notebook:
 
-- 02_silver_transformation
+- 01_silver_colaboradores
+- 02_silver_ferias
+- 03_silver_absenteismo
+- 04_silver_turnover
+
+ ```text
+Leitura Bronze
+      ↓
+Metadados
+      ↓
+Diagnóstico
+      ↓
+Padronização
+      ↓
+Tratamento
+      ↓
+Conversão de tipos
+      ↓
+Colunas derivadas
+      ↓
+Validação
+      ↓
+Gravação Silver
+├── colaboradores
+├── absenteismo
+├── turnover
+└── ferias
+``` 
 
 (Status: Em desenvolvimento)
 
