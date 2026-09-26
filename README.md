@@ -86,10 +86,32 @@ people-analytics-data-platform/
 │   │   ├── 01_bronze_ingestao_tabelas.py ✅
 │   │   └── README.md
 │   │
-│   ├── 02_silver_transformation
-│   ├── 03_gold_kpis
-│   └── 04_analytics_model
-│
+│   ├── silver/data quality/dqs
+│   │   ├── 01_silver_colaboradores.py ✅
+│   │   ├── 02_silver_ferias.py ✅
+│   │   ├── 03_silver_absenteismo.py ✅
+│   │   └── 04_silver_turnover.py ✅
+│   │       
+│   ├── gold_kpis
+│   │   ├── 00_gold_setup.py ✅
+│   │   ├── 01_gold_dim_calendario.py ✅
+│   │   ├── 02_gold_dim_colaborador.py ✅
+│   │   ├── 03_gold_fato_ferias.py ✅
+│   │   ├── 04_gold_fato_absenteismo.py ✅
+│   │   └── 05_gold_fato_turnover.py ✅
+│   │
+│   ├── pipelines_automaticos
+│   │   ├──
+│   │   └──
+│   │ 
+│   ├── analytics_model/camada_semantica
+│   │   ├──
+│   │   └──
+│   │
+│   ├── datacatalog/govenança
+│   │   ├──
+│   │   └──
+│   │
 ├── dashboard/
 │   ├── dashboard.pbix
 │   └── screenshots/
