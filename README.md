@@ -225,7 +225,7 @@ Atividades realizadas:
 - Validação de regras de negócio;
 - Remoção de inconsistências;
 - Data Quality
-- Integração entre tabelas.
+- Tabelas dq e dq_erros
 
 Notebook:
 
@@ -249,7 +249,7 @@ Conversão de tipos
       ↓
 Colunas derivadas
       ↓
-Validação - Data Quality
+Validação - Data Quality + DQ
       ↓
 Gravação Silver
 ├── colaboradores
@@ -258,7 +258,7 @@ Gravação Silver
 └── turnover
 ``` 
 
-(Status: Em desenvolvimento)
+(Status: Concluido)
 
 ---
 
