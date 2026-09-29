@@ -213,7 +213,7 @@ Camada Bronze
 └── turnover
 ```
 
-(Status: Concluido)
+### Status: ✅ Concluído
 
 ---
 
@@ -228,10 +228,11 @@ Atividades realizadas:
 - Tratamento de valores nulos;
 - Padronização de formatos;
 - Conversão de tipos de dados;
-- Validação de regras de negócio;
-- Remoção de inconsistências;
+- Aplicação e validação de regras de negócio;
+- Identificação e remoção de inconsistências;
 - Data Quality
-- Tabelas dq e dq_erros
+- Deduplicação após as validações de qualidade
+- Persistência das tabelas Silver
 
 Notebook:
 
@@ -243,7 +244,7 @@ Notebook:
  ```text
 Leitura Bronze
       ↓
-Metadados
+Metadados de processamento
       ↓
 Diagnóstico
       ↓
@@ -255,7 +256,9 @@ Conversão de tipos
       ↓
 Colunas derivadas
       ↓
-Validação - Data Quality + DQ
+Data Quality
+      ↓
+Deduplicação
       ↓
 Gravação Silver
 ├── colaboradores
@@ -264,57 +267,200 @@ Gravação Silver
 └── turnover
 ``` 
 
-(Status: Concluido)
+### Status: ✅ Concluído
+
+---
+
+# 🔎 Data Quality
+
+A camada Silver possui mecanismos estruturados de Data Quality, permitindo identificar e registrar inconsistências antes da aplicação de tratamentos como deduplicação.
+
+As validações contemplam regras relacionadas a:
+
+- Campos obrigatórios
+- Unicidade de identificadores
+- Validade de valores
+- Datas
+- Regras de negócio
+- Integridade dos dados
+  
+### Estrutura de monitoramento
+
+ ```text
+people_analytics.monitoring
+│
+├── dq_absenteismo
+├── dq_absenteismo_erros
+├── dq_colaboradores
+├── dq_colaboradores_erros
+├── dq_ferias
+├── dq_ferias_erros
+├── dq_turnover
+└── dq_turnover_erros
+ ```
+
+As tabelas de DQ armazenam informações sobre as regras executadas, status, severidade, divergências e rastreabilidade da carga.
+
+### Status: ✅ Concluído
 
 ---
 
 # 🥇 Camada Gold
 
-Objetivo:
+### Objetivo:
+Construir uma camada analítica estruturada, preparada para consumo por ferramentas de Business Intelligence e análises de People Analytics.
 
-Disponibilizar dados consolidados para consumo analítico.
+A camada Gold utiliza conceitos de modelagem dimensional, separando dimensões e fatos.
 
-Atividades realizadas:
+### Dimensão
+- dim_calendario
+- dim_colaborador
 
-- Construção de KPIs;
-- Agregações;
-- Cálculos de indicadores;
-- Tabelas analíticas;
-- Estruturas voltadas para Business Intelligence.
+### Fatos
+- fato_ferias
+- fato_absenteismo
+- fato_turnover
 
-Notebook:
+### Notebooks
 
-- 03_gold_kpis
+- 00_gold_setup.py
+- 01_gold_dim_calendario.py
+- 02_gold_dim_colaborador.py
+- 03_gold_fato_ferias.py
+- 04_gold_fato_absenteismo.py
+- 05_gold_fato_turnover.py
+- 06_gold_validacao.py
 
-(Status: Em desenvolvimento)
+### Modelo
+
+ ```text
+                    dim_calendario
+                          │
+             ┌────────────┼────────────┐
+             │            │            │
+             ▼            ▼            ▼
+       fato_ferias  fato_absenteismo  fato_turnover
+             │            │            │
+             └────────────┼────────────┘
+                          │
+                          ▼
+                   dim_colaborador
+```
+
+### Tabelas Gold
+
+```text
+people_analytics.gold
+│
+├── dim_calendario
+├── dim_colaborador
+├── fato_ferias
+├── fato_absenteismo
+└── fato_turnover
+```
+
+### Status: ✅ Concluído
 
 ---
 
-# 📐 Modelagem Analítica
+# 🛡️ Quality Gate — Gold
 
-Estrutura desenvolvida para otimizar o consumo dos dados pelo Power BI.
+Foi implementado um **Quality Gate automatizado** para validar a camada Gold antes de sua aprovação para consumo.
 
-Tabelas previstas:
+O notebook 06_gold_validacao.py realiza validações como:
 
-### Dimensões
+- Existência das tabelas Gold
+- Integridade da dimensão calendário
+- Duplicidade de chaves
+- Valores nulos em identificadores
+- Integridade referencial das tabelas fato
+- Integridade das datas
+- Reconciliação de quantidade de registros entre Silver e Gold
+- Consolidação dos resultados das validações
 
-- dim_colaborador
-- dim_departamento
-- dim_cargo
-- (outras dimensões criadas posteriormente)
+### Regra de aprovação
 
-### Fatos
+Quando todas as validações são aprovadas:
 
-- fato_absenteismo
-- fato_turnover
-- fato_ferias
-- (outras tabelas fato criadas posteriormente)
+STATUS FINAL: APROVADO
 
-Notebook:
+Caso alguma validação falhe, o notebook utiliza raise Exception, fazendo com que a Task seja marcada como **FAILED**.
 
-- 04_analytics_model
+Dessa forma, a execução da pipeline não é considerada aprovada quando os dados não passam pelo Quality Gate.
 
-(Status: Em desenvolvimento)
+### Status: ✅ Concluído
+
+---
+
+### 🔄 Orquestração e Automação
+
+A plataforma possui uma pipeline automatizada utilizando **Databricks Jobs**, responsável por coordenar a execução das camadas Bronze, Silver e Gold.
+
+### Tasks
+
+```text
+01_bronze_ingestao
+        │
+        ├──→ 02_silver_colaboradores
+        │          │
+        │          └──→ 07_gold_dim_colaborador
+        │
+        ├──→ 03_silver_ferias
+        │          │
+        │          └──→ 08_gold_fato_ferias
+        │
+        ├──→ 04_silver_absenteismo
+        │          │
+        │          └──→ 09_gold_fato_absenteismo
+        │
+        └──→ 05_silver_turnover
+                   │
+                   └──→ 10_gold_fato_turnover
+
+06_gold_dim_calendario
+        │
+        └──────────────────────────────┐
+                                       ▼
+                              11_gold_validacao
+```
+
+As dependências entre as Tasks garantem que cada etapa seja executada somente após suas respectivas dependências serem concluídas.
+
+### Quality Gate na orquestração
+
+```text
+CSV
+     ↓
+Databricks Bronze
+     ↓
+Databricks Silver
+     ↓
+Gold
+     ↓
+Quality Gate
+     ↓
+┌───────────────┐
+│ Todas PASS?   │
+└───────┬───────┘
+        │
+   ┌────┴────┐
+   ▼         ▼
+ SUCCESS    FAILED
+```
+
+Em caso de falha no Quality Gate, a Task 11_gold_validacao é marcada como **FAILED**, fazendo com que a execução geral do Job seja considerada reprovada.
+
+### Agendamento
+
+A pipeline foi configurada para execução automática:
+
+- Frequência: Diária
+- Horário: 02:00
+- Fuso: America/Sao_Paulo
+
+A primeira execução completa da pipeline foi realizada com sucesso e as execuções foram verificadas quanto à ocorrência de duplicidades.
+
+### Status: ✅ Concluído
 
 ---
 
@@ -387,40 +533,26 @@ architecture/architecture.png
 
 ---
 
-# 🔄 Pipeline de Dados
-
-```text
-CSV
- ↓
-Databricks Bronze
- ↓
-Databricks Silver
- ↓
-Databricks Gold
- ↓
-Power BI
- ↓
-Dashboards Executivos RH
-```
-
----
-
 # 📚 Conceitos Aplicados
 
 Durante o desenvolvimento deste projeto foram aplicados conceitos de:
 
 - Engenharia de Dados
 - Analytics Engineering
-- Arquitetura Medalhão
+- Arquitetura Medallion
 - ETL / ELT
-- Data Quality
 - Data Lakehouse
-- Modelagem Analítica
-- Data Quality
+- Delta Lake
 - PySpark
 - SQL
+- Data Quality
+- Quality Gate
+- Modelagem dimensional
+- Orquestração de pipelines
+- Automação de processos
 - Business Intelligence
 - People Analytics
+- Git / GitHub
 
 ---
 
@@ -428,13 +560,19 @@ Durante o desenvolvimento deste projeto foram aplicados conceitos de:
 
 Este projeto está sendo utilizado para aprofundamento prático em:
 
+- Integração de Dados
 - Databricks
 - PySpark
-- Arquitetura Medalhão
+- Apache Spark
+- Arquitetura Medallion
+- Delta Lake
 - Data Quality
 - Engenharia de Dados
 - Analytics Engineering
-- Integração de Dados
+- Modelagem analítica
+- Orquestração
+- Automação
+- Business Intelligence
 - Power BI
 - Cloud Computing
 
@@ -442,15 +580,41 @@ Este projeto está sendo utilizado para aprofundamento prático em:
 
 # 🚧 Próximas Evoluções
 
+### ETAPA 8 — Data Catalog & Governança
+- Unity Catalog
+- Organização de schemas
+- Catálogo de dados
+- Governança
+- Controle de acesso
+- Permissões
+- Linhagem
+- Metadados
+- 
+### ETAPA 9 — Modelo Semântico
+- Camada semântica
+- Regras de negócio
+- Definição dos KPIs
+- Estrutura preparada para consumo analítico
+
+### ETAPA 10 — Power BI
+- Modelo de dados
+- Medidas
+- Dashboards
+- Indicadores executivos
+- Análises de People Analytics
+
+### Evoluções futuras
 - Integração com Azure Storage
 - Integração com Microsoft Fabric
-- Automação de cargas
-- Orquestração de pipelines
-- Data Quality automatizada
-- Monitoramento
 - Integração com APIs
+- Integração com bancos de dados
+- Ingestão incremental
+- Monitoramento
 - Streaming de dados
 - Machine Learning aplicado a RH
+- IA aplicada a People Analytics
+- Analytics preditivo
+- Analytics prescritivo
 
 ---
 
