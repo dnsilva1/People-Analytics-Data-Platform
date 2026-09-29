@@ -54,12 +54,12 @@ Bronze Layer
        ↓
 
 Silver Layer
-(Dados Tratados)
+(Dados Tratados + Data Quality + DQ)
 
        ↓
 
 Gold Layer
-(KPIs e Métricas)
+(Modelo Analítico + Quality Gate)
 
        ↓
 
