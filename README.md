@@ -24,19 +24,22 @@ A solução foi construída utilizando uma arquitetura Medalhão (Bronze, Silver
 - PySpark
 - Apache Spark
 - Delta lake
+- Jobs e Pipelines - Orquestração
 - SQL
 - Power BI
 - GitHub
 
 ### Tecnologias que poderão ser incorporadas em versões futuras
 
-- Analises com IA
+- Unity Catalog
 - Azure Data Lake Storage
 - Azure Data Factory
 - Microsoft Fabric
 - Apache Airflow
-- Databricks Workflows
-- Azure DevOps
+- APIs
+- Machine Learning
+- IA aplicada a People Analytics
+- Monitoramento avançado
 
 ---
 
