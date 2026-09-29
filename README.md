@@ -1,8 +1,10 @@
 # 📊 People Analytics Data Platform
 
-Projeto de Engenharia de Dados e Analytics desenvolvido utilizando Databricks, PySpark, SQL e Power BI para implementação de uma arquitetura Medalhão (Bronze, Silver e Gold) aplicada ao contexto de People Analytics.
+Projeto de Engenharia de Dados e Analytics desenvolvido com Databricks, Python, PySpark, SQL e Power BI, utilizando arquitetura Medallion (Bronze, Silver e Gold) aplicada ao contexto de People Analytics.
 
-Este projeto foi desenvolvido como parte da minha evolução profissional para Analytics Engineering e Engenharia de Dados, aplicando conceitos de Data Lakehouse, processamento de dados, modelagem analítica e Business Intelligence.
+O projeto simula uma plataforma moderna de dados para Recursos Humanos, contemplando ingestão, tratamento, Data Quality, modelagem analítica, orquestração, automação e disponibilização de dados para Business Intelligence.
+
+Este projeto faz parte da minha evolução profissional para Analytics Engineering e Engenharia de Dados, aplicando conceitos de Data Lakehouse, Engenharia de Dados, Data Quality, modelagem dimensional, orquestração e Business Intelligence.
 
 ---
 
