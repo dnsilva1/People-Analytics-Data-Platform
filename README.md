@@ -213,7 +213,7 @@ Camada Bronze
 └── turnover
 ```
 
-### Status: ✅ Concluído
+### Status: ✅ Concluido
 
 ---
 
@@ -267,7 +267,7 @@ Gravação Silver
 └── turnover
 ``` 
 
-### Status: ✅ Concluído
+### Status: ✅ Concluido
 
 ---
 
@@ -301,7 +301,7 @@ people_analytics.monitoring
 
 As tabelas de DQ armazenam informações sobre as regras executadas, status, severidade, divergências e rastreabilidade da carga.
 
-### Status: ✅ Concluído
+### Status: ✅ Concluido
 
 ---
 
@@ -359,7 +359,7 @@ people_analytics.gold
 └── fato_turnover
 ```
 
-### Status: ✅ Concluído
+### Status: ✅ Concluido
 
 ---
 
@@ -388,7 +388,7 @@ Caso alguma validação falhe, o notebook utiliza raise Exception, fazendo com q
 
 Dessa forma, a execução da pipeline não é considerada aprovada quando os dados não passam pelo Quality Gate.
 
-### Status: ✅ Concluído
+### Status: ✅ Concluido
 
 ---
 
@@ -460,7 +460,7 @@ A pipeline foi configurada para execução automática:
 
 A primeira execução completa da pipeline foi realizada com sucesso e as execuções foram verificadas quanto à ocorrência de duplicidades.
 
-### Status: ✅ Concluído
+### Status: ✅ Concluido
 
 ---
 
