@@ -103,18 +103,19 @@ people-analytics-data-platform/
 │   │   ├── 02_gold_dim_colaborador.py ✅
 │   │   ├── 03_gold_fato_ferias.py ✅
 │   │   ├── 04_gold_fato_absenteismo.py ✅
-│   │   └── 05_gold_fato_turnover.py ✅
+│   │   ├── 05_gold_fato_turnover.py ✅
+│   │   └── 06_gold_validacao.py ✅
 │   │
 │   ├── pipelines_automaticos
 │   │   ├──
-│   │   └──
+│   │   └── README.md
 │   │ 
-│   ├── analytics_model/camada_semantica
-│   │   ├──
+│   ├── analytics_model/
+│   │   ├── camada_semantica/
 │   │   └──
 │   │
 │   ├── datacatalog/govenança
-│   │   ├──
+│   │   ├── governanca/
 │   │   └──
 │   │
 ├── dashboard/
