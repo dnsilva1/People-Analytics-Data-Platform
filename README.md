@@ -392,7 +392,7 @@ Dessa forma, a execução da pipeline não é considerada aprovada quando os dad
 
 ---
 
-### 🔄 Orquestração e Automação
+# 🔄 Orquestração e Automação
 
 A plataforma possui uma pipeline automatizada utilizando **Databricks Jobs**, responsável por coordenar a execução das camadas Bronze, Silver e Gold.
 
@@ -461,6 +461,16 @@ A pipeline foi configurada para execução automática:
 A primeira execução completa da pipeline foi realizada com sucesso e as execuções foram verificadas quanto à ocorrência de duplicidades.
 
 ### Status: ✅ Concluido
+
+---
+
+# 🔄 Orquestração e Automação
+
+- Diagnóstico do catálogo✅
+- Documentação de metadados✅
+- Governança de acessos
+- Classificação dos dados
+- Linhagem dos dados
 
 ---
 
