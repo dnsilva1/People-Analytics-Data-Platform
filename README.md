@@ -464,7 +464,7 @@ A primeira execução completa da pipeline foi realizada com sucesso e as execu�
 
 ---
 
-# 🔄 Orquestração e Automação
+# 🔄 Datacatalog/Governança
 
 - Diagnóstico do catálogo✅
 - Documentação de metadados✅
