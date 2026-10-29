@@ -471,7 +471,11 @@ A primeira execução completa da pipeline foi realizada com sucesso e as execu�
 - Governança de acessos✅
 - Classificação dos dados✅
 - Controle de acesso aos dados
-- Linhagem dos dados
+- Consolidar a qualidade dos dados
+- Completar a rastreabilidade e a linhagem
+- Revisar privacidade e proteção
+- Concluir monitoramento e auditoria
+- Completar a documentação e validar tudo
 
 ---
 
