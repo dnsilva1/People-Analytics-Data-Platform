@@ -468,8 +468,9 @@ A primeira execução completa da pipeline foi realizada com sucesso e as execu�
 
 - Diagnóstico do catálogo✅
 - Documentação de metadados✅
-- Governança de acessos
-- Classificação dos dados
+- Governança de acessos✅
+- Classificação dos dados✅
+- Controle de acesso aos dados
 - Linhagem dos dados
 
 ---
